@@ -8,6 +8,25 @@ class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()
     {
+        $repositoryMock = $this
+            ->getMockBuilder(\Doctrine\ORM\EntityRepository::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $repositoryMock->expects($this->any())
+            ->method('findBy')
+            ->willReturn([]);
+
+        // mock the EntityManager
+        $entityManager = $this
+            ->getMockBuilder(\Doctrine\ORM\EntityManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $entityManager->expects($this->any())
+            ->method('getRepository')
+            ->willReturn($repositoryMock);
+        
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
@@ -18,6 +37,25 @@ class DefaultControllerTest extends WebTestCase
     
     public function testLogin()
     {
+        $repositoryMock = $this
+            ->getMockBuilder(\Doctrine\ORM\EntityRepository::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $repositoryMock->expects($this->any())
+            ->method('findBy')
+            ->willReturn([]);
+
+        // mock the EntityManager
+        $entityManager = $this
+            ->getMockBuilder(\Doctrine\ORM\EntityManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $entityManager->expects($this->any())
+            ->method('getRepository')
+            ->willReturn($repositoryMock);
+        
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/login');
@@ -28,6 +66,25 @@ class DefaultControllerTest extends WebTestCase
     
     public function testAddGuestBook()
     {
+        $repositoryMock = $this
+            ->getMockBuilder(\Doctrine\ORM\EntityRepository::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $repositoryMock->expects($this->any())
+            ->method('findBy')
+            ->willReturn([]);
+
+        // mock the EntityManager
+        $entityManager = $this
+            ->getMockBuilder(\Doctrine\ORM\EntityManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $entityManager->expects($this->any())
+            ->method('getRepository')
+            ->willReturn($repositoryMock);
+        
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/add-guest-book');
