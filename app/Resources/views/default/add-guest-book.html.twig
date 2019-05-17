@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- container section start -->
+  <section id="container" class="">
+    <!--header start-->
+    <header class="header dark-bg">
+      
+      <!--logo start-->
+      <a href="/" class="logo">Guest <span class="lite">Book</span></a>
+      <!--logo end-->
+      
+      <div class="nav search-row" id="top_menu" style="float: right;">
+        <!--  search form start -->
+        <ul class="nav top-menu">
+          <li style="padding: 0 10px;">
+            <form class="navbar-form">
+              <input class="form-control" placeholder="Search" type="text">
+            </form>
+          </li>
+          <li class="dropdown" style="padding: 0 10px;">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <span class="username">{{ loggedInUser.name }} </span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="javascript:;"><i class="icon_profile"></i> My Profile</a>
+              </li>
+              <li>
+                <a href="/logout"><i class="icon_key_alt"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!--  search form end -->
+      </div>
+      
+    </header>
+    <!--header end-->
+
+    <!--main content start-->
+    
+    <section id="main-content" style="margin-left: 0px;">
+      <section class="wrapper">
+        
+        <div class="row">
+          <div class="col-lg-6" style="margin: 20px 25%;">
+            <section class="panel">
+              <header class="panel-heading">
+                Add Guest Book
+              </header>
+              <div class="panel-body">
+                  <p style="color: red;">{{ error }}</p>
+                <form role="form" action="/add-guest-book" name="user-guestbook" id="user-guestbook" method="post">
+                  <div class="form-group">
+                    <label for="exampleInputName">Name</label>
+                    <input type="text" class="form-control" name="name" id="exampleInputName" placeholder="Enter Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputContent">Content</label>
+                    <textarea class="form-control" name="content" rows="5" placeholder="Enter Content"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Add Guest Book</button>
+                </form>
+
+              </div>
+            </section>
+          </div>
+          
+        </div>
+        
+      </section>
+    </section>
+    
+    <!--main content end-->
+    
+  </section>
+<!-- container section end -->
+
+<!-- javascripts -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- nicescroll -->
+<script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+<!-- jquery knob -->
+<script src="{{ asset('js/jquery.knob.js') }}" type="text/javascript"></script>
+<!--custome script for all page-->
+<script src="{{ asset('js/scripts.js') }}"></script>
+
+{% endblock %}
