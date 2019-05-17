@@ -12,7 +12,44 @@ class DefaultControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/');
 
+        $this->assertEquals(500, $client->getResponse()->getStatusCode());
+    }
+    
+    
+    public function testLogin()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/login');
+
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
+    }
+    
+    
+    public function testAddGuestBook()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/add-guest-book');
+
+        $this->assertEquals(500, $client->getResponse()->getStatusCode());
+    }
+    
+    public function testSignup()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/signup');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+    
+    public function testLogout()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/logout');
+
+        $this->assertEquals(500, $client->getResponse()->getStatusCode());
     }
 }
